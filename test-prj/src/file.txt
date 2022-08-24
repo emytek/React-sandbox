@@ -1,0 +1,39 @@
+import cx from 'classnames';
+import { Component } from 'react';
+import React, {useState} from 'react'
+
+
+export default class LikeButton extends Component {
+    const [count, setCount] = useState(100)
+    const [like, setLike] = useState(false)
+
+    handleClick = () => {
+        setLike(Like => !Like);
+    }
+
+    let toggleLike = like ? 'liked' : null
+    
+    render() {
+        return (
+            <>
+                <div>
+                    <h2>Like Button</h2>
+                    <button onClick={handleClick} className={`like-button ${toggleLike}`}
+                    onClick={() => setCount(count + 1)} >
+                    Like | <span>{count}</span></button>
+                </div>
+                <style>{`
+                    .like-button {
+                        font-size: 1rem;
+                        padding: 5px 10px;
+                        color:  #585858;
+                    }
+                   .liked {
+                        font-weight: bold;
+                        color: #1565c0;
+                   }
+                `}</style>
+            </>
+        );
+    }
+}
